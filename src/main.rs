@@ -1,8 +1,20 @@
-use anyhow::Result;
+// use anyhow::Result;
+use clap::Parser;
+use crate::{commands::process_cli_args, args::Cli};
 
-// pub type Error = Box<dyn std::error::Error>;
-// pub type Result<T> = std::result::Result<T, Error>;
+mod chunk_type;
+mod chunk;
+mod png;
+mod args;
+mod commands;
+
+pub type Error = Box<dyn std::error::Error>;
+pub type Result<T> = std::result::Result<T, Error>;
 
 fn main() -> Result<()> {
-    todo!()
+    let args = Cli::parse();
+
+    process_cli_args(args);
+
+    Ok(())
 }
